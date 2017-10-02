@@ -10,6 +10,20 @@ import { HomePage } from '../pages/home/home';
 import { NgxQRCodeModule } from 'ngx-qrcode2';
 import { BarcodeScanner } from '@ionic-native/barcode-scanner';
 
+// Import the AF2 Module
+import { AngularFireModule } from 'angularfire2';
+import { AngularFireDatabase, FirebaseListObservable } from 'angularfire2/database';
+
+// AF2 Settings
+export const firebaseConfig = {
+  apiKey: "AIzaSyD4-Fc5pZCTLdgqewFwZdYEC66ClQS4S3E",
+  authDomain: "ej01-399f7.firebaseapp.com",
+  databaseURL: "https://ej01-399f7.firebaseio.com",
+  projectId: "ej01-399f7",
+  storageBucket: "ej01-399f7.appspot.com",
+  messagingSenderId: "489728820606"
+};
+
 @NgModule({
   declarations: [
     MyApp,
@@ -18,7 +32,8 @@ import { BarcodeScanner } from '@ionic-native/barcode-scanner';
   imports: [
     BrowserModule,
     IonicModule.forRoot(MyApp),
-    NgxQRCodeModule
+    NgxQRCodeModule,
+    AngularFireModule.initializeApp(firebaseConfig)
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -29,6 +44,7 @@ import { BarcodeScanner } from '@ionic-native/barcode-scanner';
     StatusBar,
     SplashScreen,
     BarcodeScanner,
+    AngularFireDatabase,
     { provide: ErrorHandler, useClass: IonicErrorHandler }
   ]
 })
